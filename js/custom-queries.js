@@ -12,7 +12,7 @@
     queryUrls['devices-Hospital'] = 'http://api.fda.gov/device/event.json?search=event_location:"hospital"&count=device.generic_name.exact';
     queryUrls['events'] = 'http://api.fda.gov/device/event.json?&count=event_type.exact';
     queryUrls['events-Hospital'] = 'http://api.fda.gov/device/event.json?search=event_location:"hospital"&count=event_type.exact';
-    queryUrls['events-HospitalBed'] = 'http://api.fda.gov/device/event.json?search=device.generic_name:"hospital+bed"&count=event_type.exact';
+    queryUrls['events-PaceMaker'] = 'http://api.fda.gov/device/event.json?search=device.generic_name:"PACEMAKER"&count=event_type.exact';
    
     // Define DataTable Column Names  
     columnNames = [];
@@ -39,7 +39,7 @@
                 { "data": "count" }
             ];
     columnNames['events-Hospital'] = columnNames['events'];
-    columnNames['events-HospitalBed'] = columnNames['events'];
+    columnNames['events-PaceMaker'] = columnNames['events'];
 
     // Define Google Chart Column Types
     chartColumnTypes = [];
@@ -58,7 +58,7 @@
     chartColumnTypes['devices-Hospital'] = chartColumnTypes['reportOverTime'];
     chartColumnTypes['events'] = chartColumnTypes['reportOverTime'];
     chartColumnTypes['events-Hospital'] = chartColumnTypes['reportOverTime'];
-    chartColumnTypes['events-HospitalBed'] = chartColumnTypes['reportOverTime'];
+    chartColumnTypes['events-PaceMaker'] = chartColumnTypes['reportOverTime'];
 
 
     // Helper method to get subset support Google Chart classes
