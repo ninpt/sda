@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tests</title>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.18.0.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <!-- Test library -->
+  <script src="http://code.jquery.com/qunit/qunit-1.18.0.js"></script>
+  <!-- Include custom code required libraries -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+ <!-- custom libraries for testing --> 
+  <script src="../js/custom-queries.js"></script>
+  <!-- Tests -->
+  <script src="tests.js"></script>
+
+  <!-- anchor elements required by test -->
+  <div id="chart_div" style="visibility:hidden"></div>
+  <div style="visibility:hidden">
+    <table id="targetTable" class="display">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+</body>
+</html>

@@ -76,22 +76,6 @@
       }
     }
 
-  <!-- Utility -->
-  function construct(constructor, args) {
-      function F() {
-          return constructor.apply(this, args);
-      }
-      F.prototype = constructor.prototype;
-      return new F();
-  };
-
-  function newCall(Cls) {
-      return new (Function.prototype.bind.apply(Cls, arguments));
-      // or even
-      // return new (Cls.bind.apply(Cls, arguments));
-      // if you know that Cls.bind has not been overwritten
-  };
-
   <!-- jQuery DataTable Functions -->
     // functions
     getData = function(queryKey, targetId, chartType) {
