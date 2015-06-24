@@ -1,4 +1,4 @@
-e-Sci Prototype URL: http://esciads-lichungliu.rhcloud.com/
+e-Sci Prototype URL: http://openfda-esciads.rhcloud.com/
 
 e-Sci Deisgn URL: https://github.com/ninpt/sda
 
