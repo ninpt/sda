@@ -13,52 +13,59 @@
     queryUrls['events'] = 'http://api.fda.gov/device/event.json?&count=event_type.exact';
     queryUrls['events-Hospital'] = 'http://api.fda.gov/device/event.json?search=event_location:"hospital"&count=event_type.exact';
     queryUrls['events-PaceMaker'] = 'http://api.fda.gov/device/event.json?search=device.generic_name:"PACEMAKER"&count=event_type.exact';
+
+    queryUrls['drug'] = 'http://api.fda.gov/drug/event.json?search=serious:"1"+AND+drugindication:"HYPERTENSION"+AND+receivedate:[20040101+TO+20150101]&count=receivedate';
+    queryUrls['drug-manu'] = 'https://api.fda.gov/drug/event.json?search=serious:"1"+AND+drugindication:"HYPERTENSION"+AND+receivedate:[20040101+TO+20150101]+AND+_exists_:companynumb&count=receivedate';
+    queryUrls['drug-consumers'] = 'http://api.fda.gov/drug/event.json?search=serious:"1"+AND+drugindication:"HYPERTENSION"+AND+receivedate:[20040101+TO+20150101]+AND+_missing_:companynumb&count=receivedate';
+
    
     // Define DataTable Column Names  
     columnNames = [];
-    columnNames['test'] = [
+    columnNames['default_count'] = [
                 { "data": "term" },
                 { "data": "count" }
-            ];
-    columnNames['reportOverTime'] = [
+    	    ];
+    columnNames['default_time'] = [
                 { "data": "time" },
                 { "data": "count" }
-            ];
-    columnNames['reportOverTime-Consumers'] = columnNames['reportOverTime'];
-    columnNames['reportOverTime-Pacemakers'] = columnNames['reportOverTime'];
+    	    ];
+    columnNames['test'] = columnNames['default_count'];
 
-    columnNames['devices'] = [
-                { "data": "term" },
-                { "data": "count" }
-            ];
-    columnNames['devices-Home'] = columnNames['devices'];
-    columnNames['devices-Hospital'] = columnNames['devices'];
+    columnNames['reportOverTime'] = columnNames['default_time'];
+    columnNames['reportOverTime-Consumers'] = columnNames['default_time'];
+    columnNames['reportOverTime-Pacemakers'] = columnNames['default_time'];
 
-    columnNames['events'] = [
-                { "data": "term" },
-                { "data": "count" }
-            ];
-    columnNames['events-Hospital'] = columnNames['events'];
-    columnNames['events-PaceMaker'] = columnNames['events'];
+    columnNames['devices'] = columnNames['default_count'];
+    columnNames['devices-Home'] = columnNames['default_count'];
+    columnNames['devices-Hospital'] = columnNames['default_count'];
+
+    columnNames['events'] = columnNames['default_count'];
+    columnNames['events-Hospital'] = columnNames['default_count'];
+    columnNames['events-PaceMaker'] = columnNames['default_count'];
+    
+    columnNames['drug'] = columnNames['default_time'];
+    columnNames['drug-manu'] = columnNames['default_time'];
+    columnNames['drug-consumers'] = columnNames['default_time'];
 
     // Define Google Chart Column Types
     chartColumnTypes = [];
-    chartColumnTypes['test'] = [
+    chartColumnTypes['default_columnTypes'] = [
                 { "type" : "string" },
                 { "type" : "number"}
     ];
-    chartColumnTypes['reportOverTime'] = [
-                { "type" : "string" },
-                { "type" : "number"}
-    ];
-    chartColumnTypes['reportOverTime-Consumers'] = chartColumnTypes['reportOverTime'];
-    chartColumnTypes['reportOverTime-Pacemakers'] = chartColumnTypes['reportOverTime'];
-    chartColumnTypes['devices'] = chartColumnTypes['reportOverTime'];
-    chartColumnTypes['devices-Home'] = chartColumnTypes['reportOverTime'];
-    chartColumnTypes['devices-Hospital'] = chartColumnTypes['reportOverTime'];
-    chartColumnTypes['events'] = chartColumnTypes['reportOverTime'];
-    chartColumnTypes['events-Hospital'] = chartColumnTypes['reportOverTime'];
-    chartColumnTypes['events-PaceMaker'] = chartColumnTypes['reportOverTime'];
+    chartColumnTypes['test'] = chartColumnTypes['default_columnTypes'];
+    chartColumnTypes['reportOverTime'] = chartColumnTypes['default_columnTypes'];
+    chartColumnTypes['reportOverTime-Consumers'] = chartColumnTypes['default_columnTypes'];
+    chartColumnTypes['reportOverTime-Pacemakers'] = chartColumnTypes['default_columnTypes'];
+    chartColumnTypes['devices'] = chartColumnTypes['default_columnTypes'];
+    chartColumnTypes['devices-Home'] = chartColumnTypes['default_columnTypes'];
+    chartColumnTypes['devices-Hospital'] = chartColumnTypes['default_columnTypes'];
+    chartColumnTypes['events'] = chartColumnTypes['default_columnTypes'];
+    chartColumnTypes['events-Hospital'] = chartColumnTypes['default_columnTypes'];
+    chartColumnTypes['events-PaceMaker'] = chartColumnTypes['default_columnTypes'];
+    chartColumnTypes['drug'] = chartColumnTypes['default_columnTypes'];
+    chartColumnTypes['drug-manu'] = chartColumnTypes['default_columnTypes'];
+    chartColumnTypes['drug-consumers'] = chartColumnTypes['default_columnTypes'];
 
 
     // Helper method to get subset support Google Chart classes
@@ -158,9 +165,9 @@
 
         // Set chart options
         var options = {// 'title':'Percentage',
-                       'width':600,
+                       'width':700,
                        'height':450,
-                       'chartArea': {'width': '75%', 'height': '75%'},
+                       'chartArea': {'width': '60%', 'height': '75%'},
                        'legend': {'position': 'bottom'}
                       };
 

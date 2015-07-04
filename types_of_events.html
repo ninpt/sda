@@ -9,8 +9,7 @@
     <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
     <link href="data/styles.css" type="text/css" rel="stylesheet"/>
     <link href="files/types_of_events/styles.css" type="text/css" rel="stylesheet"/>
-   
-    <!-- <script src="resources/scripts/jquery-1.7.1.min.js"></script> -->
+    <!--<script src="resources/scripts/jquery-1.7.1.min.js"></script>-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
@@ -59,7 +58,7 @@
       });
     </script>
 
-  </head>
+</head>
   <body>
     <div id="base" class="">
 
@@ -83,12 +82,12 @@
 
       <!-- Unnamed (Header) -->
 
-      <!-- NavHome (Shape) -->
-      <div id="u5" class="ax_h2 text_link" data-label="NavHome" title="This is a tooltip.">
+      <!-- DrugReportsLink (Shape) -->
+      <div id="u5" class="ax_h2 text_link" data-label="DrugReportsLink" title="This is a tooltip.">
         <img id="u5_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u6" class="text">
-          <p><span>Explore Dara</span></p>
+          <p><span>Drug Reports</span></p>
         </div>
       </div>
 
@@ -97,7 +96,7 @@
         <img id="u7_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u8" class="text">
-          <p><span>Reports Over Time</span></p>
+          <p><span>Device Reports</span></p><p><span>(Time Based)</span></p>
         </div>
       </div>
 
@@ -106,7 +105,7 @@
         <img id="u9_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u10" class="text">
-          <p><span>Devices</span></p>
+          <p><span>Device Reports</span></p><p><span>(Location Based)</span></p>
         </div>
       </div>
 
@@ -115,7 +114,7 @@
         <img id="u11_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u12" class="text">
-          <p><span>Types of Events</span></p>
+          <p><span>Device Reports</span></p><p><span>(Frequency Based)</span></p>
         </div>
       </div>
 
@@ -135,7 +134,7 @@
       <div id="u15" class="ax_horizontal_line">
         <img id="u15_start" class="img " src="resources/images/transparent.gif" alt="u15_start"/>
         <img id="u15_end" class="img " src="resources/images/transparent.gif" alt="u15_end"/>
-        <img id="u15_line" class="img " src="images/home/u15_line.png" alt="u15_line"/>
+        <img id="u15_line" class="img " src="images/reports_over_time/u15_line.png" alt="u15_line"/>
       </div>
 
       <!-- Unnamed (Shape) -->
@@ -192,22 +191,20 @@
         <label for="u26_input">
           <!-- Unnamed () -->
           <div id="u27" class="text">
-            <p><span>Device name includes "PACEMAKER"</span></p>
+            <p><span>Device name includes hospital bed</span></p>
           </div>
         </label>
         <input id="u26_input" type="radio" value="radio" onclick="getData('events-PaceMaker', 'targetTable', 'PieChart')" name="DeviceAERBasedOnFrequency"/>
       </div>
 
-      <!-- Unnamed (Shape) -->
-      <div id="u28" class="ax_shape">
-        <!-- <img id="u28_img" class="img " src="images/home/u28.png"/> -->
+      <!-- google-chart4 (Shape) -->
+      <div id="u28" class="ax_shape" data-label="google-chart4">
+        <!--<img id="u28_img" class="img " src="images/home/google-chart1_u28.png"/>-->
         <!-- Unnamed () -->
-        <!--
-        <div id="u29" class="text">
+        <!--<div id="u29" class="text">
           <p><span></span></p>
-        </div>
-        -->
-        <div id="chart_div"></div>
+        </div>-->
+              <div id="chart_div"></div>
           <div style="visibility:hidden">
           <table id="targetTable" class="display">
               <thead>

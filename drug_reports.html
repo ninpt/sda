@@ -1,15 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Home</title>
+    <title>Drug Reports</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
     <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
     <link href="data/styles.css" type="text/css" rel="stylesheet"/>
-    <link href="files/home/styles.css" type="text/css" rel="stylesheet"/>
-    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <link href="files/drug_reports/styles.css" type="text/css" rel="stylesheet"/>
+    <!--<script src="resources/scripts/jquery-1.7.1.min.js"></script>-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
     <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
     <script src="resources/scripts/axure/axQuery.js"></script>
     <script src="resources/scripts/axure/globals.js"></script>
@@ -37,7 +41,7 @@
     <script src="resources/scripts/axure/adaptive.js"></script>
     <script src="resources/scripts/axure/tree.js"></script>
     <script src="resources/scripts/axure/init.temp.js"></script>
-    <script src="files/home/data.js"></script>
+    <script src="files/drug_reports/data.js"></script>
     <script src="resources/scripts/axure/legacy.js"></script>
     <script src="resources/scripts/axure/viewer.js"></script>
     <script type="text/javascript">
@@ -45,6 +49,15 @@
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
       $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
+
+    <script src="js/custom-queries.js"></script>
+    <script type="text/javascript">
+      // Load Default Query
+      jQuery(document).ready( function() {
+        getData('drug', 'targetTable', 'LineChart');
+      });
+    </script>
+
   </head>
   <body>
     <div id="base" class="">
@@ -121,7 +134,7 @@
       <div id="u15" class="ax_horizontal_line">
         <img id="u15_start" class="img " src="resources/images/transparent.gif" alt="u15_start"/>
         <img id="u15_end" class="img " src="resources/images/transparent.gif" alt="u15_end"/>
-        <img id="u15_line" class="img " src="images/home/u15_line.png" alt="u15_line"/>
+        <img id="u15_line" class="img " src="images/drug_reports/u15_line.png" alt="u15_line"/>
       </div>
 
       <!-- Unnamed (Shape) -->
@@ -129,7 +142,7 @@
         <img id="u16_img" class="img " src="images/home/u16.png"/>
         <!-- Unnamed () -->
         <div id="u17" class="text">
-          <p><span>Device adverse event reports over time</span></p>
+          <p><span>Adverse drug event reports since 2004 for Hypertension</span></p>
         </div>
       </div>
 
@@ -138,7 +151,7 @@
         <img id="u18_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u19" class="text">
-          <p><span>This is the openFDA API endpoint for medical device adverse event reports. An adverse event report is submitted to the FDA to report serious injuries, deaths, malfunctions, and other undesirable effects associated with the use of medical devices. Increases in the number of reports may be due to greater use of medical devices, more awareness of reporting, news, enforcement actions, and other phenomena.</span></p>
+          <p><span>This report provides results for adverse drug events that included &quot;Serious&quot; reactions, specifically for treating hypertension. The reprts are provided for te period of 2004 through 2015. The chart provides comparison between the adverse reactions reported by manufacturers and consumers.</span></p>
         </div>
       </div>
 
@@ -151,46 +164,58 @@
         </div>
       </div>
 
-      <!-- Unnamed (Radio Button) -->
-      <div id="u22" class="ax_radio_button">
+      <!-- DrugReports2004button (Radio Button) -->
+      <div id="u22" class="ax_radio_button" data-label="DrugReports2004button">
         <label for="u22_input">
           <!-- Unnamed () -->
           <div id="u23" class="text">
-            <p><span>Reports since 2000</span></p>
+            <p><span>Reports since 2004</span></p>
           </div>
         </label>
-        <input id="u22_input" type="radio" value="radio" name="DeviceAER_Group" checked/>
+        <input id="u22_input" type="radio" value="radio" onclick="getData('drug', 'targetTable', 'LineChart')" name="DeviceAER_Group" checked/>
       </div>
 
-      <!-- Unnamed (Radio Button) -->
-      <div id="u24" class="ax_radio_button">
+      <!-- ReportsByMfrsButton (Radio Button) -->
+      <div id="u24" class="ax_radio_button" data-label="ReportsByMfrsButton">
         <label for="u24_input">
           <!-- Unnamed () -->
           <div id="u25" class="text">
-            <p><span>Reported by Consumers</span></p>
+            <p><span>Reported by Manufacturers</span></p>
           </div>
         </label>
-        <input id="u24_input" type="radio" value="radio" name="DeviceAER_Group"/>
+        <input id="u24_input" type="radio" value="radio" onclick="getData('drug-manu', 'targetTable', 'LineChart')" name="DeviceAER_Group"/>
       </div>
 
-      <!-- Unnamed (Radio Button) -->
-      <div id="u26" class="ax_radio_button">
+      <!-- DrugReportsConsumerButton (Radio Button) -->
+      <div id="u26" class="ax_radio_button" data-label="DrugReportsConsumerButton">
         <label for="u26_input">
           <!-- Unnamed () -->
           <div id="u27" class="text">
-            <p><span>Reported for device &quot;PACEMAKER&quot;</span></p>
+            <p><span>Reported by Consumers</span></p>
           </div>
         </label>
-        <input id="u26_input" type="radio" value="radio" name="DeviceAER_Group"/>
+        <input id="u26_input" type="radio" value="radio" onclick="getData('drug-consumers', 'targetTable', 'LineChart')" name="DeviceAER_Group"/>
       </div>
 
-      <!-- google-chart1 (Shape) -->
-      <div id="u28" class="ax_shape" data-label="google-chart1">
-        <img id="u28_img" class="img " src="images/home/google-chart1_u28.png"/>
+      <!-- google-chart2 (Shape) -->
+      <div id="u28" class="ax_shape" data-label="google-chart2">
+        <!--<img id="u28_img" class="img " src="images/home/google-chart1_u28.png"/>-->
         <!-- Unnamed () -->
-        <div id="u29" class="text">
+        <!--<div id="u29" class="text">
           <p><span></span></p>
+        </div>-->
+        <div id="chart_div"></div>
+        <div style="visibility:hidden">
+          <table id="targetTable" class="display">
+              <thead>
+                  <tr>
+                      <th>Id</th>
+                      <th>Count</th>
+                  </tr>
+              </thead>
+          </table>
         </div>
+
       </div>
 
       <!-- Unnamed (Image) -->
