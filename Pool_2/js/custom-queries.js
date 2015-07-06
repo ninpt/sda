@@ -165,7 +165,7 @@
 
         // Set chart options
         var options = {// 'title':'Percentage',
-                       'width':700,
+                       'width':650,
                        'height':450,
                        'chartArea': {'width': '60%', 'height': '75%'},
                        'legend': {'position': 'bottom'}
