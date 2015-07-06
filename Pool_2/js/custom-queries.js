@@ -167,7 +167,7 @@
         var options = {// 'title':'Percentage',
                        'width':650,
                        'height':450,
-                       'chartArea': {'width': '60%', 'height': '75%'},
+                       'chartArea': {'width': '58%', 'height': '75%'},
                        'legend': {'position': 'bottom'}
                       };
 
