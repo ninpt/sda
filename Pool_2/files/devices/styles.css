@@ -1,4 +1,4 @@
-﻿body {
+body {
   margin:0px;
   background-image:url('../../images/sitemap/bg.gif');
   background-position:left top;
@@ -7,7 +7,7 @@
   background-size:auto;
   position:relative;
   left:-20px;
-  width:1038px;
+  width:960px;
   margin-left:auto;
   margin-right:auto;
   text-align:left;
@@ -224,7 +224,7 @@
 }
 #u15 {
   position:absolute;
-  left:98px;
+  left:20px;
   top:156px;
   width:960px;
   height:10px;
